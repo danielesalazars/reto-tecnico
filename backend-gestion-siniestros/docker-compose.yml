@@ -1,0 +1,16 @@
+version: "3.8"
+
+services:
+  backend-siniestros:
+    build: .
+    container_name: backend-siniestros
+    ports:
+      - "4001:4001"
+    environment:
+      - PORT=4001
+    networks:
+      - network-red
+
+networks:
+  network-red:
+    driver: bridge

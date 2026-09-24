@@ -1,0 +1,37 @@
+version: "3.8"
+
+services:
+  mysql-db:
+    image: mysql:8.3.0
+    container_name: mysql_traductor_db
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: endorse_db
+      MYSQL_USER: db_user
+      MYSQL_PASSWORD: db_password
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+  backend-traductor:
+    build:
+      context: ./backend-traductor
+      dockerfile: Dockerfile
+    container_name: api_backend_traductor
+    restart: always
+    ports:
+      - "3150:4000"
+    environment:
+      - PORT=4000
+      - DB_HOST=mysql-db
+      - DB_USER=db_user
+      - DB_PASSWORD=db_password
+      - DB_NAME=endorse_db
+    depends_on:
+      - mysql-db
+
+volumes:
+  mysql_data:
+    external: false

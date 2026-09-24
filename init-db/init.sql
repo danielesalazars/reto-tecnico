@@ -1,0 +1,4 @@
+CREATE DATABASE IF NOT EXISTS endorse_db;
+
+GRANT ALL PRIVILEGES ON endorse_db.* TO 'db_user'@'%';
+FLUSH PRIVILEGES;

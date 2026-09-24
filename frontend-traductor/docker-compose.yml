@@ -1,0 +1,12 @@
+services:
+  frontend-traductor:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: frontend-traductor:latest
+    container_name: app_frontend_traductor
+    ports:
+      - "3100:80"
+    restart: always
+    environment:
+      - VITE_API_BASE_URL=http://localhost:4000

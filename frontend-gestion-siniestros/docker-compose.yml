@@ -1,0 +1,12 @@
+services:
+  frontend-gestion-siniestros:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: frontend-gestion-siniestros:latest
+    container_name: app_frontend_gestion_siniestros
+    ports:
+      - "3200:80"
+    restart: always
+    environment:
+      - VITE_API_BASE_URL=http://localhost:4000

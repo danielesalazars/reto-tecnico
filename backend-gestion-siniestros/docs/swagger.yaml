@@ -1,0 +1,64 @@
+basePath: /
+definitions:
+  entities.SiniestroEntity:
+    type: object
+host: localhost:4001
+info:
+  contact: {}
+  description: Microservicio para la administración y control de siniestros en Go.
+  title: API de Gestión de Siniestros
+  version: "1.0"
+paths:
+  /api/v1/siniestros:
+    get:
+      description: Obtiene una lista con todos los siniestros registrados
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/entities.SiniestroEntity'
+            type: array
+        "500":
+          description: Internal Server Error
+          schema:
+            additionalProperties: true
+            type: object
+      summary: Listar todos los siniestros
+      tags:
+      - siniestros
+    post:
+      consumes:
+      - application/json
+      description: Crea un nuevo registro de siniestro en la base de datos
+      parameters:
+      - description: Datos del siniestro
+        in: body
+        name: siniestro
+        required: true
+        schema:
+          $ref: '#/definitions/entities.SiniestroEntity'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            additionalProperties: true
+            type: object
+        "400":
+          description: Bad Request
+          schema:
+            additionalProperties: true
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            additionalProperties: true
+            type: object
+      summary: Registrar un nuevo siniestro
+      tags:
+      - siniestros
+swagger: "2.0"
