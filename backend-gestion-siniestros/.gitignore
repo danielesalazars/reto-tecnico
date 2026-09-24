@@ -1,0 +1,13 @@
+# Binarios y ejecutables de Go
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+bin/
+vendor/
+
+# Entornos y logs
+.env
+.DS_Store
+*.log

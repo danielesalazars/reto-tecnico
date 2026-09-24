@@ -1,0 +1,9 @@
+# Entornos y configuración local
+.env
+.env.local
+
+# Sistemas y editores
+.DS_Store
+.idea/
+.vscode/
+*.log
